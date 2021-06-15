@@ -36,14 +36,11 @@ client.on('message', async (msg) => {
                     await lib.generateQR(accessToken,fileNameID);
                     // variable for attachment (qr)
                     const attachment = new MessageAttachment('./qrcode-images/qr-'+ msg.author.id + '.png')
-                    //send the qr code with the corresponding qr code via dm
+                    await msg.author.send("Here is your qr login code" + scholarDiscordID[i].name)
+                    //send the qr code to scholar via dm
                     msg.author.send(attachment);
-                } else {
-                    // if the user is not on the scholar send a message via dm
-                    msg.author.send('You are not a scholar yet, if this a error please contact the scholar manager') 
-                }
+                } 
         } 
-
         }
     
     }
