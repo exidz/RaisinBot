@@ -20,27 +20,21 @@ client.on('message', async (msg) => {
     if (msg.channel.id == channelID || msg.channel.type == "dm") {
         // and if message content $qr
         if(msg.content === '$qr') {
-        // For loop that loop the scholarDiscordID array of object
-            for(i=0; i < scholarDiscordID.length; i++){
-                //if the user is in the list of scholar        
-                if(scholarDiscordID[i].id === msg.author.id) {
-                    // get the corresponding eth address of the scholar
-                    const accountAddress = scholarDiscordID[i].ethAddress;
-                    // get the corresponding ETH private key of the scholar
-                    const privateKey = scholarDiscordID[i].privateKey;
-                    // assign msg.author.id into fileNameID for later use in saving qr
-                    const fileNameID = msg.author.id
-                    // feed the 2 required parameters (accountAddress and private key) into the submitSignature function and assign a accessToken to handle the return of the submitSignature function
-                    accessToken = await lib.submitSignature(accountAddress, privateKey);
-                    // generate the qr and feed it the required parameters the accessToken and fileNameID
+            scholarDiscordID.map(async (scholar) => {
+                if (scholar.id === msg.author.id) {
+                    const accountAddress = scholar.ethAddress;
+                    const privateKey = scholar.privateKey;
+                    const fileNameID = msg.author.id;
+                    const accessToken = await lib.submitSignature(accountAddress, privateKey);
                     await lib.generateQR(accessToken,fileNameID);
-                    // variable for attachment (qr)
                     const attachment = new MessageAttachment('./qrcode-images/qr-'+ msg.author.id + '.png')
-                    await msg.author.send("Here is your qr login code" + scholarDiscordID[i].name)
-                    //send the qr code to scholar via dm
+                    await msg.author.send("Here is your qr login code " + scholar.name)
                     msg.author.send(attachment);
-                } 
-        } 
+                    console.log(scholar.name + ' requested QR');
+                }
+
+
+            })
         }
     
     }
