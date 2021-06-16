@@ -27,7 +27,7 @@ A Discord Bot that main purpose is to help the Axie Infinity Scholarship program
 ## Setup the Bot
 1. Create a .env file in the cloned repo.
 `touch .env`
-2. Edit the .env file. See the .env.example for references
+2. Edit the .env file. See the `.env.example` for references
 `nano .env`
 3. Run the bot 
 `node bot.js`
