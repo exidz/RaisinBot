@@ -40,8 +40,8 @@ client.on('message', async (msg) => {
                 const embed = new MessageEmbed()
                     .setTitle("Here is your current game status")
                     .setAuthor(msg.author.username)
-                    .addField('Currents SLP count: ', status['total'], true)
-                    .addField('Claimable SLP: ', status['claimable_total'], true);
+                    .addField('Currents SLP count: ', status[3], true)
+                    .addField('Claimable SLP: ', status[5], true);
 
                 msg.reply(embed);
                 console.log(scholar.name + 'check status');
