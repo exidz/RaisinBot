@@ -37,14 +37,16 @@ client.on('message', async (msg) => {
             if(scholar.id === msg.author.id) {
                 const accountAddress = scholar.ethAddress;
                 const status = await data.getStatus(accountAddress);
+                const currentSLP = status['total']
+                const claimableSLP = status['claimable_total']
                 const embed = new MessageEmbed()
                     .setTitle("Here is your current game status")
                     .setAuthor(msg.author.username)
-                    .addField('Currents SLP count: ', status[3], true)
-                    .addField('Claimable SLP: ', status[5], true);
+                    .addField('Currents SLP count: ', currentSLP, true)
+                    .addField('Claimable SLP: ', claimableSLP, true);
 
                 msg.reply(embed);
-                console.log(scholar.name + 'check status');
+                console.log(scholar.name + ' check status');
                 
 
             } 
