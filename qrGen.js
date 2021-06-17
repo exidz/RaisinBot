@@ -21,7 +21,7 @@ const getRawMessage = async () => {
       const randMessage = await response.json();
       return randMessage['data']['createRandomMessage'];
   } catch (error) {
-      console.log('error');
+      console.log(error);
   };
 };
 

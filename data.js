@@ -12,10 +12,8 @@ const scholar = () => {
     const data = new Array();
     for (i =0; i < scholarDiscordID.length; i++) {
         data.push(new Object(scholarDiscordID[i]));
-        // data.push(new Object());
     }
-    return data;
-    
+    return data;  
 };
 
 const getStatus = async (accountAddress) => {
