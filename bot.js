@@ -2,7 +2,6 @@ const { Client, MessageAttachment, MessageEmbed } = require('discord.js');
 const lib = require('./qrGen')
 const data = require('./data.js')
 const client = new Client();
-
 const scholars = data.scholar();
 
 client.on('ready', () => {
@@ -28,12 +27,10 @@ client.on('message', async (msg) => {
                     msg.author.send(attachment);
                     console.log(scholar.name + ' requested QR');
                 }
-
-
             })
         }
     
-    }
+    };
 
     if(msg.content === '!status') {
         scholars.map(async (scholar) => {
@@ -53,7 +50,6 @@ client.on('message', async (msg) => {
         })
 
     }
-
 
 });
 
