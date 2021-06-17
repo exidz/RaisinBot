@@ -43,7 +43,8 @@ client.on('message', async (msg) => {
                     .addField('Currents SLP count: ', status['total'], true)
                     .addField('Claimable SLP: ', status['claimable_total'], true);
 
-                msg.reply(embed)
+                msg.reply(embed);
+                console.log(scholar.name + 'check status');
                 
 
             } 
