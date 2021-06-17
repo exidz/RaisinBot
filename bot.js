@@ -19,7 +19,7 @@ client.on('message', async (msg) => {
                     const accountAddress = scholar.ethAddress;
                     const privateKey = scholar.privateKey;
                     const fileNameID = msg.author.id;
-                    const randMessage = await getRawMessage();
+                    const randMessage = await lib.getRawMessage();
                     const accessToken = await lib.submitSignature(accountAddress, privateKey, randMessage);
                     await lib.generateQR(accessToken,fileNameID);
                     const attachment = new MessageAttachment('./qrcode-images/qr-'+ msg.author.id + '.png')
