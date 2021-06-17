@@ -26,11 +26,10 @@ const getRawMessage = async () => {
 };
 
 // Async function with 2 parameters (accountAddress and privatekey) that sign the random message above, submit signature to the Axie Infinity GraphQL API and return an AccessToken 
-const submitSignature = async (accountAddress, privateKey) => {
+const submitSignature = async (accountAddress, privateKey, randMessage) => {
     // get the random message in the getRawMessage Function
-    const message = await getRawMessage();
     // sign the random message using the private key of corresponding scholar discord ID
-    let hexSignature = web3.eth.accounts.sign(message, privateKey);
+    let hexSignature = web3.eth.accounts.sign(randMessage, privateKey);
     hexSignature = hexSignature['signature'];
      
     try {
@@ -42,7 +41,7 @@ const submitSignature = async (accountAddress, privateKey) => {
             },
             body: JSON.stringify({
             "operationName":"CreateAccessTokenWithSignature",
-            "variables":{"input":{"mainnet":"ethereum","owner":accountAddress,"message":message,"signature":hexSignature }},
+            "variables":{"input":{"mainnet":"ethereum","owner":accountAddress,"message":randMessage,"signature":hexSignature }},
             "query":"mutation CreateAccessTokenWithSignature($input: SignatureInput!) {\n  createAccessTokenWithSignature(input: $input) {\n    newAccount\n    result\n    accessToken\n    __typename\n  }\n}\n"
             })
 
@@ -98,4 +97,4 @@ const generateQR = async (accessToken, fileNameID) => {
 };
 
 // exports the two function as module for later use
-module.exports = { generateQR, submitSignature }
+module.exports = { generateQR, submitSignature, getRawMessage }
