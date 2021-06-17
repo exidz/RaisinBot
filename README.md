@@ -43,7 +43,7 @@ Ethereum Address : 0xf647c936fa9064b67e59c962b069626cb688ffb1
 
 
 ## Need Help?
-If you need help or questions please contact me to this channels.
+If you need help or encountered a bug please contact me to this channels.
 
 Twitter Account : https://twitter.com/_exidz_
 
