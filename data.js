@@ -1,4 +1,5 @@
 require('dotenv').config()
+const fetch = require('node-fetch');
 
 // your discord key 
 const token = process.env.DISCORD_BOT_KEY;
@@ -15,6 +16,21 @@ const scholar = () => {
     }
     return data;
     
-}
+};
 
-module.exports = { scholar, token, channelID }
+const getStatus = async (accountAddress) => {
+    try {
+        const url = 'https://lunacia.skymavis.com/game-api/clients/' + accountAddress + '/items/1';
+        const response = await (await fetch(url)).json();
+        return response;
+        
+    } catch (error) {
+        console.log(error);
+        
+    }
+};
+
+
+
+
+module.exports = { scholar, token, channelID, getStatus }
