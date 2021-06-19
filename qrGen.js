@@ -68,7 +68,7 @@ const generateQR = async (accessToken, fileNameID) => {
         height: 256, // height of the qr
         colorDark : "#000000", // color of the qr 
         colorLight : "#ffffff", // color of the qr 
-        correctLevel : QRCode.CorrectLevel.L,
+        correctLevel : QRCode.CorrectLevel.H,
         quietZone: 15, // size of the quiet zone of qr code
         quietZoneColor: "rgba(0,0,0,0)", // color of the quite zone of qr code
         logo: './logo.png', // your brand logo path that put in the center of qr
@@ -80,12 +80,6 @@ const generateQR = async (accessToken, fileNameID) => {
         titleBackgroundColor: "#fff", // background color of the title
         titleHeight: 20, // title height
         titleTop: 10, //draws y coordinates
-        PO: '#e1622f', // global position outer color
-        PI: '#aa5b71', // global position inner color
-        timing: '#e1622f',
-        dotScale: 0.5, 
-        dotScaleTiming: 1,
-        dotScaleA: 0.5,
         });
         //save the qr with the object of options as png file with the corrensponding scholar id
         qrcode.saveImage({
