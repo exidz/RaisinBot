@@ -18,10 +18,14 @@ const getRawMessage = async () => {
           'variables': {}
         }),
       });
+      if(!response.ok) {
+        throw Error('Axie Infinity API have a problem')
+    }
       const randMessage = await response.json();
       return randMessage['data']['createRandomMessage'];
   } catch (error) {
       console.log(error);
+      return true;
   };
 };
 
@@ -68,14 +72,14 @@ const generateQR = async (accessToken, fileNameID) => {
         height: 256, // height of the qr
         colorDark : "#000000", // color of the qr 
         colorLight : "#ffffff", // color of the qr 
-        correctLevel : QRCode.CorrectLevel.H,
+        correctLevel : QRCode.CorrectLevel.L,
         quietZone: 15, // size of the quiet zone of qr code
         quietZoneColor: "rgba(0,0,0,0)", // color of the quite zone of qr code
         logo: './logo.png', // your brand logo path that put in the center of qr
         logoWidth: 40, // logo width size
         logoHeight: 40, // logo height size
         title: 'Your Axie Infinity Login QR',  // title of your QR code
-        titleFont: "normal normal bold 18px Arial", // font of the title of the QR code
+        titleFont: "normal normal bold 18px Ubuntu", // font of the title of the QR code
         titleColor: "#004284", // color of the title of qr code
         titleBackgroundColor: "#fff", // background color of the title
         titleHeight: 20, // title height
