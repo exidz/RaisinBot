@@ -7,7 +7,7 @@ const slpPrice = async () => {
             throw Error('Axie Infinity API have a problem')
         }
         const price = await response.json();
-        return price["market_data"]["current_price"]["php"];
+        return price["market_data"]["current_price"]["usd"];
     } catch (error) {
         console.log(error);
         return false;       
