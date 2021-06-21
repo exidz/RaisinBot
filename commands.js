@@ -126,7 +126,7 @@ module.exports = async (msg) => {
                 .setColor('#1E90FF')
                 .setTitle("Smooth Love Potion Price")
                 .setAuthor(msg.author.username)                
-                .addField('1 SLP = ' + slpPrice + ' pesos', '\u200B')
+                .addField('1 SLP = ' + slpPrice + ' USD', '\u200B')
                 .setTimestamp()
                 .setFooter('Coingecko API');                
             msg.reply(embed)
