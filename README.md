@@ -8,6 +8,7 @@ A Discord Bot that main purpose is to help the Axie Infinity Scholarship program
 :heavy_check_mark: Track earned SLP and claimable SLP
 
 :heavy_multiplication_x: Get Ethereum gas price 
+
 :heavy_check_mark: Get SLP current price in USD
 
 :heavy_check_mark: Customizable QR code (e.g QR logo and color)
