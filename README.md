@@ -36,6 +36,16 @@ A Discord Bot that main purpose is to help the Axie Infinity Scholarship program
 4. Run the bot 
 `node bot.js`
 
+## Bot Commands
+
+`!qr` -> get qr
+
+`!mystatus` -> check current SLP claimable/unclaimable count and date of last/next claim
+
+`!statusof <MENTION_TAG>` -> currently, this feature is available for owner/admin of server that check the status of a scholar e.g !statusof @Exidz
+
+`!price` -> check current price of SLP in USD
+
 ## Donations
 With your donation, I will able to keep working on this project and add more features or you can request a feature you want to add. 
 
