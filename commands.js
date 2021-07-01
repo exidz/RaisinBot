@@ -55,15 +55,15 @@ module.exports = async (msg) => {
     } else if (command === 'qr') {
         scholars.map(async (scholar) => {
             if (scholar.id === msg.author.id) {
-                const accountAddress = scholar.ethAddress;
-                const privateKey = scholar.privateKey;
+                const accountAddress = scholar.metamaskEthAddress;
+                const roninPrivateKey = scholar.roninPrivateKey;
                 const fileNameID = msg.author.id;
                 const haveError = await lib.getRawMessage();
                 if(haveError === true) {
                     msg.reply('Please Try again');
                 } else {
                     const randMessage = await lib.getRawMessage();
-                    const accessToken = await lib.submitSignature(accountAddress, privateKey, randMessage);
+                    const accessToken = await lib.submitSignature(accountAddress, roninPrivateKey, randMessage);
                     await lib.generateQR(accessToken,fileNameID);
                     const attachment = new MessageAttachment('./qrcode-images/qr-'+ msg.author.id + '.png');
                     await msg.author.send("Thanks for waiting, here is your qr login code " + scholar.name)
