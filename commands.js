@@ -18,7 +18,7 @@ module.exports = async (msg) => {
     if (command === 'mystatus') {
         scholars.map(async (scholar) => {
             if(scholar.id === msg.author.id) {
-                const accountAddress = scholar.ethAddress;
+                const accountAddress = scholar.roninAddress;
                 const data = await app.getStatus(accountAddress); 
                 if(data === false) {
                     msg.reply('Please Try again');
@@ -55,7 +55,7 @@ module.exports = async (msg) => {
     } else if (command === 'qr') {
         scholars.map(async (scholar) => {
             if (scholar.id === msg.author.id) {
-                const accountAddress = scholar.ethAddress;
+                const accountAddress = scholar.roninAddress;
                 const privateKey = scholar.privateKey;
                 const fileNameID = msg.author.id;
                 const haveError = await lib.getRawMessage();
@@ -81,7 +81,7 @@ module.exports = async (msg) => {
                 }   
                 scholars.map(async (scholar) => {
                     if(scholar.id === user) {
-                        const accountAddress = scholar.ethAddress;
+                        const accountAddress = scholar.roninAddress;
                         const data = await app.getStatus(accountAddress); 
                         if(data === false) {
                             msg.reply('Please Try again');
