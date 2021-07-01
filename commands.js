@@ -55,7 +55,7 @@ module.exports = async (msg) => {
     } else if (command === 'qr') {
         scholars.map(async (scholar) => {
             if (scholar.id === msg.author.id) {
-                const accountAddress = scholar.roninAddress;
+                const accountAddress = scholar.ethAddress;
                 const privateKey = scholar.privateKey;
                 const fileNameID = msg.author.id;
                 const haveError = await lib.getRawMessage();
