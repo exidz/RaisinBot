@@ -17,8 +17,7 @@ module.exports = async (msg) => {
     if (command === 'mystatus') {
         scholars.map(async (scholar) => {
             if(scholar.id === msg.author.id) {
-                const ethAddress = scholar.ethAddress;
-                const roninAddress = await app.getRoninAddress(ethAddress)
+                const roninAddress = scholar.roninAddress;
                 const data = await app.getStatus(roninAddress); 
                 if(data === false) {
                     msg.reply('Please Try again');
@@ -35,8 +34,8 @@ module.exports = async (msg) => {
                         minute: 'numeric', 
                         second: 'numeric', 
                         timeZoneName: 'short' };
-                    const lastClaimed = dateOne.toLocaleDateString(undefined, options);
-                    const claimAt = dateTwo.toLocaleDateString(undefined, options);                    
+                    const lastClaimed = dateOne.toLocaleDateString(undefined, {timeZone:'Asia/Manila'});
+                    const claimAt = dateTwo.toLocaleDateString(undefined, {timeZone:'Asia/Manila'});                    
                     const currentSLP = data['total']
                     const claimableSLP = data['claimable_total']
                     const embed = new MessageEmbed()
@@ -55,8 +54,8 @@ module.exports = async (msg) => {
     } else if (command === 'qr') {
         scholars.map(async (scholar) => {
             if (scholar.id === msg.author.id) {
-                const accountAddress = scholar.ethAddress;
-                const privateKey = scholar.ethPrivateKey;
+                const accountAddress = scholar.roninAddress;
+                const privateKey = scholar.roninPrivateKey;
                 const fileNameID = msg.author.id;
                 const haveError = await lib.getRawMessage();
                 if(haveError === true) {
@@ -82,8 +81,7 @@ module.exports = async (msg) => {
                     }   
                     scholars.map(async (scholar) => {
                         if(scholar.id === user) {
-                            const ethAddress = scholar.ethAddress;
-                            const roninAddress = await app.getRoninAddress(ethAddress)
+                            const roninAddress = scholar.roninAddress;
                             const data = await app.getStatus(roninAddress); 
                             if(data === false) {
                                 msg.reply('Please Try again');
@@ -100,8 +98,8 @@ module.exports = async (msg) => {
                                     minute: 'numeric', 
                                     second: 'numeric', 
                                     timeZoneName: 'short' };
-                                const lastClaimed = dateOne.toLocaleDateString(undefined, options);
-                                const claimAt = dateTwo.toLocaleDateString(undefined, options);                    
+                                const lastClaimed = dateOne.toLocaleDateString(undefined, {timeZone:'Asia/Manila'});
+                                const claimAt = dateTwo.toLocaleDateString(undefined, {timeZone:'Asia/Manila'});                    
                                 const currentSLP = data['total']
                                 const claimableSLP = data['claimable_total']
                                 const embed = new MessageEmbed()
