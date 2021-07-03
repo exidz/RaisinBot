@@ -7,8 +7,7 @@ const scholars = JSON.parse(process.env.SCHOLAR);
 const slicer = require('./features/slicer.js')
 
 const prefix = '!'
-const managerID = process.env.ADMIN_ID;
-const ownerID = process.env.OWNER_ID
+const managerID = JSON.parse(process.env.ADMIN_ID);
 
 module.exports = async (msg) => {
     if (!msg.content.startsWith(prefix) || msg.author.bot) return;
@@ -74,50 +73,54 @@ module.exports = async (msg) => {
             }
         })
     } else if (command === 'statusof') {
-        if (msg.author.id === managerID || msg.author.id === ownerID) {
-            if (args[0]) {
-                const user = slicer(args[0]);
-                if (!user) {
-                    return msg.reply('Please use a proper mention if you want to see someone elses game status.');
-                }   
-                scholars.map(async (scholar) => {
-                    if(scholar.id === user) {
-                        const ethAddress = scholar.ethAddress;
-                        const roninAddress = await app.getRoninAddress(ethAddress)
-                        const data = await app.getStatus(roninAddress); 
-                        if(data === false) {
-                            msg.reply('Please Try again');
-                        } else {
-                            const timestamp = data['last_claimed_item_at'] * 1000
-                            const dateOne = new Date(timestamp);
-                            const dateTwo = new Date(timestamp + + 12096e5)
-                            const options = { 
-                                weekday: 'long', 
-                                year: 'numeric', 
-                                month: 'long', 
-                                day: 'numeric', 
-                                hour: 'numeric', 
-                                minute: 'numeric', 
-                                second: 'numeric', 
-                                timeZoneName: 'short' };
-                            const lastClaimed = dateOne.toLocaleDateString(undefined, options);
-                            const claimAt = dateTwo.toLocaleDateString(undefined, options);                    
-                            const currentSLP = data['total']
-                            const claimableSLP = data['claimable_total']
-                            const embed = new MessageEmbed()
-                                .setAuthor(msg.author.username)
-                                .addField('Currents SLP count: ', currentSLP)
-                                .addField('Claimable SLP: ', claimableSLP)
-                                .addField('Last Claimed Date : ', lastClaimed)
-                                .addField('Next Claim Date: ', claimAt)
-                                .setTimestamp()
-                                .setFooter('Exidz Academy Bot' );  
-                            msg.reply(embed);
-                            console.log(scholar.name + ' check status');
-                        }                            
-                    } 
-                }) 
+        for(let i=0; i < managerID; i++) {
+            if(managerID[i] === msg.author.id) {
+                if (args[0]) {
+                    const user = slicer(args[0]);
+                    if (!user) {
+                        return msg.reply('Please use a proper mention tag if you want to see someone else game status.');
+                    }   
+                    scholars.map(async (scholar) => {
+                        if(scholar.id === user) {
+                            const ethAddress = scholar.ethAddress;
+                            const roninAddress = await app.getRoninAddress(ethAddress)
+                            const data = await app.getStatus(roninAddress); 
+                            if(data === false) {
+                                msg.reply('Please Try again');
+                            } else {
+                                const timestamp = data['last_claimed_item_at'] * 1000
+                                const dateOne = new Date(timestamp);
+                                const dateTwo = new Date(timestamp + + 12096e5)
+                                const options = { 
+                                    weekday: 'long', 
+                                    year: 'numeric', 
+                                    month: 'long', 
+                                    day: 'numeric', 
+                                    hour: 'numeric', 
+                                    minute: 'numeric', 
+                                    second: 'numeric', 
+                                    timeZoneName: 'short' };
+                                const lastClaimed = dateOne.toLocaleDateString(undefined, options);
+                                const claimAt = dateTwo.toLocaleDateString(undefined, options);                    
+                                const currentSLP = data['total']
+                                const claimableSLP = data['claimable_total']
+                                const embed = new MessageEmbed()
+                                    .setAuthor(msg.author.username)
+                                    .addField('Currents SLP count: ', currentSLP)
+                                    .addField('Claimable SLP: ', claimableSLP)
+                                    .addField('Last Claimed Date : ', lastClaimed)
+                                    .addField('Next Claim Date: ', claimAt)
+                                    .setTimestamp()
+                                    .setFooter('Exidz Academy Bot' );  
+                                msg.reply(embed);
+                                console.log(scholar.name + ' check status');
+                            }                            
+                        } 
+                    }) 
+                }
+
             }
+            
         }              
     } else if (command === 'price') {
         const slpPrice = await getPrice.slpPrice();
