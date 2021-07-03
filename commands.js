@@ -47,7 +47,7 @@ module.exports = async (msg) => {
                         .setTimestamp()
                         .setFooter('Exidz Academy Bot' );  
                     msg.reply(embed);
-                    console.log(scholar.name + ' check status');
+                    console.log(`Check status by ${msg.author.tag}`);
                 }                    
             } 
         })        
@@ -111,7 +111,7 @@ module.exports = async (msg) => {
                                     .setTimestamp()
                                     .setFooter('Exidz Academy Bot' );  
                                 msg.reply(embed);
-                                console.log(scholar.name + ' check status');
+                                console.log(`Check status of ${user} by ${msg.author.tag}`);
                             }                            
                         } 
                     }) 
