@@ -76,8 +76,8 @@ const generateQR = async (accessToken, fileNameID) => {
         quietZone: 15, // size of the quiet zone of qr code
         quietZoneColor: "rgba(0,0,0,0)", // color of the quite zone of qr code
         logo: './logo.png', // your brand logo path that put in the center of qr
-        logoWidth: 40, // logo width size
-        logoHeight: 40, // logo height size
+        logoWidth: 50, // logo width size
+        logoHeight: 63, // logo height size
         title: 'Your Axie Infinity Login QR',  // title of your QR code
         titleFont: "normal normal bold 18px Ubuntu", // font of the title of the QR code
         titleColor: "#004284", // color of the title of qr code
