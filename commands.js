@@ -33,7 +33,7 @@ module.exports = async (msg) => {
                         hour: 'numeric', 
                         minute: 'numeric', 
                         second: 'numeric', 
-                        timeZoneName: 'Asia/Manila' };
+                        timeZoneName: 'short' };
                     const lastClaimed = dateOne.toLocaleDateString(undefined, options);
                     const claimAt = dateTwo.toLocaleDateString(undefined, options);                    
                     const currentSLP = data['total']
@@ -97,7 +97,7 @@ module.exports = async (msg) => {
                                     hour: 'numeric', 
                                     minute: 'numeric', 
                                     second: 'numeric', 
-                                    timeZoneName: 'Asia/Manila' };
+                                    timeZoneName: 'short' };
                                 const lastClaimed = dateOne.toLocaleDateString(undefined, options);
                                 const claimAt = dateTwo.toLocaleDateString(undefined, options);                    
                                 const currentSLP = data['total']
