@@ -73,7 +73,7 @@ module.exports = async (msg) => {
             }
         })
     } else if (command === 'statusof') {
-        for(let i=0; i < managerID; i++) {
+        for(let i=0; i < managerID.length; i++) {
             if(managerID[i] === msg.author.id) {
                 if (args[0]) {
                     const user = slicer(args[0]);
