@@ -18,8 +18,9 @@ module.exports = async (msg) => {
     if (command === 'mystatus') {
         scholars.map(async (scholar) => {
             if(scholar.id === msg.author.id) {
-                const accountAddress = scholar.roninAddress;
-                const data = await app.getStatus(accountAddress); 
+                const ethAddress = scholar.ethAddress;
+                const roninAddress = await app.getRoninAddress(ethAddress)
+                const data = await app.getStatus(roninAddress); 
                 if(data === false) {
                     msg.reply('Please Try again');
                 } else {
@@ -81,8 +82,9 @@ module.exports = async (msg) => {
                 }   
                 scholars.map(async (scholar) => {
                     if(scholar.id === user) {
-                        const accountAddress = scholar.roninAddress;
-                        const data = await app.getStatus(accountAddress); 
+                        const ethAddress = scholar.ethAddress;
+                        const roninAddress = await app.getRoninAddress(ethAddress)
+                        const data = await app.getStatus(roninAddress); 
                         if(data === false) {
                             msg.reply('Please Try again');
                         } else {
