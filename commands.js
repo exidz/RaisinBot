@@ -65,9 +65,9 @@ module.exports = async (msg) => {
                     const accessToken = await lib.submitSignature(accountAddress, privateKey, randMessage);
                     await lib.generateQR(accessToken,fileNameID);
                     const attachment = new MessageAttachment('./qrcode-images/qr-'+ msg.author.id + '.png');
-                    await msg.author.send("Thanks for waiting, here is your qr login code " + scholar.name)
+                    await msg.author.send(`Thanks for waiting, here is your qr login code ${msg.author.tag}` )
                     msg.author.send(attachment);
-                    console.log(scholar.name + ' requested QR');
+                    console.log(`${msg.author.tag} requested a QR`);
                 }               
             }
         })
