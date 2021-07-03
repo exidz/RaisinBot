@@ -34,8 +34,8 @@ module.exports = async (msg) => {
                         minute: 'numeric', 
                         second: 'numeric', 
                         timeZoneName: 'short' };
-                    const lastClaimed = dateOne.toLocaleDateString(undefined, {timeZone:'Asia/Manila'});
-                    const claimAt = dateTwo.toLocaleDateString(undefined, {timeZone:'Asia/Manila'});                    
+                    const lastClaimed = dateOne.toLocaleDateString(undefined, {timeZone: 'Asia/Manila'});
+                    const claimAt = dateTwo.toLocaleDateString(undefined, {timeZone: 'Asia/Manila'});                    
                     const currentSLP = data['total']
                     const claimableSLP = data['claimable_total']
                     const embed = new MessageEmbed()
