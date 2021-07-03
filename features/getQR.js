@@ -34,7 +34,7 @@ const submitSignature = async (accountAddress, privateKey, randMessage) => {
     // get the random message in the getRawMessage Function
     // sign the random message using the private key of corresponding scholar discord ID
     let hexSignature = web3.eth.accounts.sign(randMessage, privateKey);
-    hexSignature = hexSignature['signature'];
+    hexSignature = hexSignature["signature"];
      
     try {
         //Call the Axie Infinity GraphQL API and provide the required parameters that we set up in this function
