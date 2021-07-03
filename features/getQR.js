@@ -45,7 +45,7 @@ const submitSignature = async (accountAddress, privateKey, randMessage) => {
             },
             body: JSON.stringify({
             "operationName":"CreateAccessTokenWithSignature",
-            "variables":{"input":{"mainnet":"ethereum","owner":accountAddress,"message":randMessage,"signature":hexSignature }},
+            "variables":{"input":{"mainnet":"ronin","owner":accountAddress,"message":randMessage,"signature":hexSignature }},
             "query":"mutation CreateAccessTokenWithSignature($input: SignatureInput!) {\n  createAccessTokenWithSignature(input: $input) {\n    newAccount\n    result\n    accessToken\n    __typename\n  }\n}\n"
             })
 
