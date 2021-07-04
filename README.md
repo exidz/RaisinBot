@@ -14,7 +14,7 @@ A Discord Bot that main purpose is to help the Axie Infinity Scholarship program
 :heavy_check_mark: Customizable QR code (e.g QR logo and color)
 
 ## Prerequisite
-- Ubuntu VPS or Ubuntu Local server
+- Ubuntu VPS (recommended hetzner)
 - Discord Bot token
 
 ## Installation
