@@ -12,7 +12,7 @@ const managerID = JSON.parse(process.env.ADMIN_ID);
 module.exports = async (msg) => {
     if (!msg.content.startsWith(prefix) || msg.author.bot) return;
 	const args = msg.content.slice(prefix.length).trim().split(' ');
-	const command = args.shift().toLowerCase();
+	const command = args[0].toLowerCase();
 
     if (command === 'mystatus') {
         scholars.map(async (scholar) => {
@@ -121,8 +121,7 @@ module.exports = async (msg) => {
 
         }
     } else if (command.includes('price')) {
-        let commandArray = command.split(" ");
-        let currency = commandArray[1].toLowerCase();
+        const currency = args[1].toLowerCase();
         const slpPrice = await getPrice.slpPrice(currency);
         if (slpPrice === false) {
             return msg.reply('Please try again later')
@@ -131,7 +130,7 @@ module.exports = async (msg) => {
                 .setColor('#1E90FF')
                 .setTitle("Smooth Love Potion Price")
                 .setAuthor(msg.author.username)
-                .addField('1 SLP = ' + slpPrice + currency, '\u200B')
+                .addField('1 SLP = ' + slpPrice + currency.toUpperCase(), '\u200B')
                 .setTimestamp()
                 .setFooter('Coingecko API');
             msg.reply(embed)
