@@ -74,8 +74,8 @@ module.exports = async (msg) => {
     } else if (command === 'statusof') {
         for(let i=0; i < managerID.length; i++) {
             if(managerID[i] === msg.author.id) {
-                if (args[0]) {
-                    const user = slicer(args[0]);
+                if (args[1]) {
+                    const user = slicer(args[1]);
                     if (!user) {
                         return msg.reply('Please use a proper mention tag if you want to see someone else game status.');
                     }
