@@ -1,10 +1,10 @@
 require('dotenv').config()
 const { MessageAttachment, MessageEmbed } = require('discord.js');
-const app = require('./features/getStatus.js')
-const lib = require('./features/getQR.js')
-const getPrice = require('./features/getPriceSLP.js')
-const scholars = JSON.parse(process.env.SCHOLAR);
-const slicer = require('./features/slicer.js')
+const app = require('./features/getStatus.js');
+const lib = require('./features/getQR.js');
+const getPrice = require('./features/getPriceSLP.js');
+const scholars = require('./resources/scholars.json');
+const slicer = require('./features/slicer.js');
 
 const prefix = '!'
 const managerID = JSON.parse(process.env.ADMIN_ID);
