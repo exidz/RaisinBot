@@ -35,9 +35,9 @@ module.exports = async (msg) => {
                         second: 'numeric', 
                         timeZoneName: 'short' };
                     const lastClaimed = dateOne.toLocaleDateString(undefined, options);
-                    const claimAt = dateTwo.toLocaleDateString(undefined, options);                    
-                    const currentSLP = data['total']
-                    const claimableSLP = data['claimable_total']
+                    const claimAt = dateTwo.toLocaleDateString(undefined, options);
+                    const currentSLP = data['blockchain_related']['balance']
+                    const claimableSLP = data['raw_total'] - data['raw_claimable_total']
                     const embed = new MessageEmbed()
                         .setAuthor(msg.author.username)
                         .addField('Currents SLP count: ', currentSLP)
@@ -99,9 +99,9 @@ module.exports = async (msg) => {
                                     second: 'numeric', 
                                     timeZoneName: 'short' };
                                 const lastClaimed = dateOne.toLocaleDateString(undefined, options);
-                                const claimAt = dateTwo.toLocaleDateString(undefined, options);                    
-                                const currentSLP = data['total']
-                                const claimableSLP = data['claimable_total']
+                                const claimAt = dateTwo.toLocaleDateString(undefined, options);
+                                const currentSLP = data['blockchain_related']['balance']
+                                const claimableSLP = data['raw_total'] - data['raw_claimable_total']
                                 const embed = new MessageEmbed()
                                     .setAuthor(msg.author.username)
                                     .addField('Currents SLP count: ', currentSLP)
