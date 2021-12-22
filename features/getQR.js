@@ -7,7 +7,7 @@ const QRCode = require('easyqrcodejs-nodejs');
 //Async function that return the query of random message in the Axie Infinity Grapql API
 const getRawMessage = async () => {
   try {
-      const response = await fetch('https://axieinfinity.com/graphql-server-v2/graphql', {
+      const response = await fetch('https://graphql-gateway.axieinfinity.com/graphql', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -38,7 +38,7 @@ const submitSignature = async (accountAddress, privateKey, randMessage) => {
      
     try {
         //Call the Axie Infinity GraphQL API and provide the required parameters that we set up in this function
-        const response = await fetch('https://axieinfinity.com/graphql-server-v2/graphql',{
+        const response = await fetch('https://graphql-gateway.axieinfinity.com/graphql',{
         method: 'POST',
             headers: {
             'Content-Type': 'application/json'
